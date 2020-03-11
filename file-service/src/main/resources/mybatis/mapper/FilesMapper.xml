@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zk.mapper.FilesMapper">
+  <resultMap id="BaseResultMap" type="com.zk.po.model.Files">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="size" jdbcType="DOUBLE" property="size" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="attention" jdbcType="INTEGER" property="attention" />
+    <result column="evaluate" jdbcType="INTEGER" property="evaluate" />
+    <result column="score" jdbcType="DOUBLE" property="score" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="belong" jdbcType="INTEGER" property="belong" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="download" jdbcType="INTEGER" property="download" />
+    <result column="money" jdbcType="INTEGER" property="money" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_icon" jdbcType="VARCHAR" property="userIcon" />
+    <result column="shuo_ming" jdbcType="VARCHAR" property="shuoMing" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, size, author, attention, evaluate, score, type, belong, time, download, 
+    money, user_id, user_icon, shuo_ming
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from files
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from files
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from files
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zk.po.model.Files">
+    insert into files (id, title, size, 
+      author, attention, evaluate, 
+      score, type, belong, 
+      time, download, money, 
+      user_id, user_icon, shuo_ming
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{size,jdbcType=DOUBLE}, 
+      #{author,jdbcType=VARCHAR}, #{attention,jdbcType=INTEGER}, #{evaluate,jdbcType=INTEGER}, 
+      #{score,jdbcType=DOUBLE}, #{type,jdbcType=VARCHAR}, #{belong,jdbcType=INTEGER}, 
+      #{time,jdbcType=VARCHAR}, #{download,jdbcType=INTEGER}, #{money,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{userIcon,jdbcType=VARCHAR}, #{shuoMing,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zk.po.model.Files">
+    insert into files
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="attention != null">
+        attention,
+      </if>
+      <if test="evaluate != null">
+        evaluate,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="belong != null">
+        belong,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="download != null">
+        download,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userIcon != null">
+        user_icon,
+      </if>
+      <if test="shuoMing != null">
+        shuo_ming,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=DOUBLE},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="attention != null">
+        #{attention,jdbcType=INTEGER},
+      </if>
+      <if test="evaluate != null">
+        #{evaluate,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="belong != null">
+        #{belong,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="download != null">
+        #{download,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userIcon != null">
+        #{userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="shuoMing != null">
+        #{shuoMing,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zk.po.model.Files">
+    update files
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=DOUBLE},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="attention != null">
+        attention = #{attention,jdbcType=INTEGER},
+      </if>
+      <if test="evaluate != null">
+        evaluate = #{evaluate,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="belong != null">
+        belong = #{belong,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="download != null">
+        download = #{download,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userIcon != null">
+        user_icon = #{userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="shuoMing != null">
+        shuo_ming = #{shuoMing,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zk.po.model.Files">
+    update files
+    set title = #{title,jdbcType=VARCHAR},
+      size = #{size,jdbcType=DOUBLE},
+      author = #{author,jdbcType=VARCHAR},
+      attention = #{attention,jdbcType=INTEGER},
+      evaluate = #{evaluate,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      type = #{type,jdbcType=VARCHAR},
+      belong = #{belong,jdbcType=INTEGER},
+      time = #{time,jdbcType=VARCHAR},
+      download = #{download,jdbcType=INTEGER},
+      money = #{money,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_icon = #{userIcon,jdbcType=VARCHAR},
+      shuo_ming = #{shuoMing,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
